@@ -225,6 +225,15 @@ EOD;
                             return $schema->getMutationType();
                         }
                     ],
+                    'subscriptionType' => [
+                        'description' =>
+                            'If this server support subscription, the type that ' +
+                            'subscription operations will be rooted at.',
+                        'type' => self::_type(),
+                        'resolve' => function (Schema $schema) {
+                            return null;
+                        }
+                    ],
                     'directives' => [
                         'description' => 'A list of all directives supported by this server.',
                         'type' => Type::nonNull(Type::listOf(Type::nonNull(self::_directive()))),
