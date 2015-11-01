@@ -42,6 +42,7 @@ class Introspection
     __schema {
       queryType { name }
       mutationType { name }
+      subscriptionType { name }
       types {
         ...FullType
       }
@@ -62,7 +63,7 @@ class Introspection
     kind
     name
     description
-    fields {
+    fields(includeDeprecated: true) {
       name
       description
       args {
@@ -80,7 +81,7 @@ class Introspection
     interfaces {
       ...TypeRef
     }
-    enumValues {
+    enumValues(includeDeprecated: true) {
       name
       description
       isDeprecated
@@ -120,6 +121,7 @@ EOD;
     __schema {
       queryType { name }
       mutationType { name }
+      subscriptionType { name }
       types {
         ...FullType
       }
@@ -138,7 +140,7 @@ EOD;
   fragment FullType on __Type {
     kind
     name
-    fields {
+    fields(includeDeprecated: true) {
       name
       args {
         ...InputValue
@@ -155,7 +157,7 @@ EOD;
     interfaces {
       ...TypeRef
     }
-    enumValues {
+    enumValues(includeDeprecated: true) {
       name
       isDeprecated
       deprecationReason
